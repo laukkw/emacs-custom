@@ -15,7 +15,8 @@
 ;;; Code:
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
+;;             ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+;;;             ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;;;生效套件路径                                                                             ;;;;
 (package-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -121,7 +122,6 @@
 ;;; 绑定到主模式
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (add-to-list  (make-local-variable 'company-backends)
-
                                                 '(company-elisp))))
 ;;; 更改选项 选择  本来是 M n   改成 C n
 (with-eval-after-load 'company
@@ -185,6 +185,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;修改
 (load "~/.emacs.d/custom/go.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                gtags                ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/gtags.el")
+
 
 (provide 'init)
 

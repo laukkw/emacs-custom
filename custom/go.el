@@ -20,22 +20,33 @@
 
 ;;; Commentary:
 ;;; Code:
-(require 'go-mode)
-(set-variable 'gofmt-command "goimports")
+;;;  lose  zxxx
+(use-package go-mode
+  :ensure t
+  :mode (("\\.go\\'" . go-mode))
+  :config
+  (setq gofmt-command "goimports")
+  (use-package company-go
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook (lambda()
+                              (add-to-list (make-local-variable 'company-backends)
+                                           '(company-lsp company-files company-yasnippet company-capf company-dabbrev))))))
+  (use-package go-errcheck
+    :ensure t
+    :hook (go-mode . go-errcheck-ignore)
+  )
+  (use-package lsp-mode
+    :ensure t
+    :hook (go-mode . lsp-mode)
+    )
+  (use-package company-lsp
+      :defer t
+      :init (setq company-lsp-cache-candidates 'auto))
 
-(defun go-mode-fmt ()
-  (interactive)
-  (when (eq major-mode 'go-mode)
-    (gofmt)))
-(global-set-key (kbd "C-c f") 'go-mode-fmt)
-
-
-
-(require 'eglot)
-(add-to-list 'eglot-server-programs '(go-mode . ("gopls")))
-(define-key eglot-mode-map (kbd "C-c d") 'eglot-help-at-point)
-(define-key eglot-mode-map (kbd "C-c v") 'eglot-shutdown)
-(add-hook 'go-mode-hook #'eglot-ensure)
-
+  (use-package lsp-ui
+      :defer t
+      :commands lsp-ui-mode)
+  
 ;;;(add-hook 'go-mode-hook #'company-mode-on)
 ;;; go.el ends here
