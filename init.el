@@ -49,9 +49,9 @@
 ;;;                            自动补全括号                                                 ;;;;
 (electric-pair-mode t)
 ;;                             添加<> 成对                                                  ;;;;
-;;(setq electric-pair-pairs '(
-;;                            (?\< . ?\>)
-;;			    ))
+(setq electric-pair-pairs '(
+                            (?\" . ?\")
+                            ))
 ;;;                            关掉 tab 单独设置                                            ;;;;
 (setq-default indent-tabs-mode nil)
 ;;;                            视窗跳转 支持C x ←                                          ;;;;
@@ -111,7 +111,7 @@
   :config
   (global-company-mode t) ;;;所有模式都启动 global mode
   (setq company-idle-delay 0) ;;;反应时间
-  (setq company-minimum-prefix-length 3) ;;; 三个字开始
+  (setq company-minimum-prefix-length 2) ;;; 三个字开始
   (setq company-backends
         '((company-files ;;;补全引入路径
            company-yasnippet ;;;补全snippet
@@ -183,14 +183,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                 golang              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;修改
+;;;暂时使用 lsp-mode company-lsp 来做代码提示
 (load "~/.emacs.d/custom/go.el")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                        ;                gtags                ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "~/.emacs.d/custom/gtags.el")
-
 
 (provide 'init)
 
