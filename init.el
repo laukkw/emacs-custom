@@ -15,6 +15,7 @@
 ;;; Code:
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
 ;;             ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 ;;;             ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;;;生效套件路径                                                                             ;;;;
@@ -186,6 +187,59 @@
 ;;;暂时使用 lsp-mode company-lsp 来做代码提示
 (load "~/.emacs.d/custom/go.el")
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(load "~/.emacs.d/custom/nox.el")
+(dolist (hook (list
+               'js-mode-hook
+               'rust-mode-hook
+               'python-mode-hook
+               'ruby-mode-hook
+               'java-mode-hook
+               'sh-mode-hook
+               'php-mode-hook
+               'c-mode-common-hook
+               'c-mode-hook
+               'c++-mode-hook
+               'haskell-mode-hook
+               ))
+  (add-hook hook '(lambda () (nox-ensure))))
+(use-package posframe
+  :ensure t
+  )
+
 (provide 'init)
 
+;;;;;;;;;
+;;;(lab-themes-load-style 'dark)
+;;;(flucui-themes-load-style 'dark)
+
+(setq-default mode-line-format
+              '("%e"
+                ;;mode-line-front-space
+                mode-line-client
+                ;;mode-line-modified
+                ;; mode-line-remote -- no need to indicate this specially 
+                ;; mode-line-frame-identification -- this is for text-mode emacs only
+                "--   -- Miss:Zxx --- "
+                ;mode-line-directory
+                mode-line-buffer-identification
+                " "
+                mode-line-position
+                "   "
+                ;;mode-line-modes
+                ;;;mode-line-misc-info
+                "Path: "
+                buffer-file-name
+                "    "
+                (flycheck-mode flycheck-mode-line)
+                lsp--before-change-vals
+                "    "
+                " Author :rzry    "
+                ))
+
+
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)

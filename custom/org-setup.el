@@ -12,6 +12,7 @@
 (use-package org-download
 :ensure t
 )
+(setq electric-pair-mode nil)
 (use-package org-bullets
 :ensure t
 :hook (org-mode . org-bullets-mode)
@@ -27,7 +28,7 @@
   (lisp . t)
   (latex . t)
   (java . t)
-  (go . t)
+;;;  (go . t)
 ))
 )
 

@@ -26,27 +26,28 @@
   :mode (("\\.go\\'" . go-mode))
   :config
   (setq gofmt-command "goimports")
-  (use-package company-go
-    :ensure t
-    :config
-    (add-hook 'go-mode-hook (lambda()
-                              (add-to-list (make-local-variable 'company-backends)
-                                           '(company-lsp company-files company-yasnippet company-capf company-dabbrev))))))
-  (use-package go-errcheck
-    :ensure t
-    :hook (go-mode . go-errcheck-ignore)
-  )
-  (use-package lsp-mode
-    :ensure t
-    :hook (go-mode . lsp-mode)
-    )
-  (use-package company-lsp
-      :defer t
-      :init (setq company-lsp-cache-candidates 'auto))
+  (setq electric-pair-mode nil))
+;;  (use-package company-go
+;;    :ensure t
+;;    :config
+;;    (add-hook 'go-mode-hook (lambda()
+;;                              (add-to-list (make-local-variable 'company-backends)
+;;                                           '(company-lsp company-files company-yasnippet company-capf company-dabbrev))))))
+;;  (use-package go-errcheck
+;;    :ensure t
+;;    :hook (go-mode . go-errcheck-ignore)
+;;  )
+;;  (use-package lsp-mode
+;;    :ensure t
+;;    :hook (go-mode . lsp-mode)
+;;    )
+;;  (use-package company-lsp
+;;      :defer t
+;;      :init (setq company-lsp-cache-candidates 'auto))
 
   (use-package lsp-ui
       :defer t
       :commands lsp-ui-mode)
-  
+
 ;;;(add-hook 'go-mode-hook #'company-mode-on)
 ;;; go.el ends here
