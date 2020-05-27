@@ -191,7 +191,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load "~/.emacs.d/custom/nox.el")
+(use-package posframe
+  :ensure t
+  )
+
+(require 'posframe)
+(load-file "~/.emacs.d/nox/nox.el")
 (dolist (hook (list
                'js-mode-hook
                'rust-mode-hook
@@ -206,9 +211,6 @@
                'haskell-mode-hook
                ))
   (add-hook hook '(lambda () (nox-ensure))))
-(use-package posframe
-  :ensure t
-  )
 
 (provide 'init)
 
