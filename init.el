@@ -6,7 +6,7 @@
 ;;;                                                                                         ;;;;
 ;;;                             rzry                                                        ;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                               添加套件路径                                               ;;;;
+;;;                              添加套件路径                                               ;;;;
 
 ;;; Commentary:
 ;; 
@@ -55,6 +55,7 @@
                             ))
 ;;;                            关掉 tab 单独设置                                            ;;;;
 (setq-default indent-tabs-mode nil)
+
 ;;;                            视窗跳转 支持C x ←                                          ;;;;
 (winner-mode t)
 ;;;                            函数折叠  C c @ C h    C c @ C s                             ;;;;
@@ -94,7 +95,6 @@
   :ensure t
   :bind (("\C-s" . swiper))
   )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;yasnippet输入key出来代码;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package yasnippet
   :ensure t
@@ -170,8 +170,13 @@
 ;;;
 (use-package ag
   :ensure t)
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;gtk
+;;;
 
-
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;                 org                 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -186,15 +191,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;暂时使用 lsp-mode company-lsp 来做代码提示
 (load "~/.emacs.d/custom/go.el")
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;;;                        nox
 (use-package posframe
   :ensure t
   )
-
 (require 'posframe)
 (load-file "~/.emacs.d/nox/nox.el")
 (dolist (hook (list
@@ -211,37 +212,47 @@
                'haskell-mode-hook
                ))
   (add-hook hook '(lambda () (nox-ensure))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;switch-windows
+(load-file "~/.emacs.d/custom/switch-windows.el")
+
 
 (provide 'init)
-
 ;;;;;;;;;
 ;;;(lab-themes-load-style 'dark)
 ;;;(flucui-themes-load-style 'dark)
+;;
+;;;;
+;;
+;;关于eaf
+(use-package eaf
+  :load-path "~/.emacs.d/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+  :custom
+  (eaf-find-alternate-file-in-dired t)
+  :config
+  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+  (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+;;;;
+;;; 设置tab
 
-(setq-default mode-line-format
-              '("%e"
-                ;;mode-line-front-space
-                mode-line-client
-                ;;mode-line-modified
-                ;; mode-line-remote -- no need to indicate this specially 
-                ;; mode-line-frame-identification -- this is for text-mode emacs only
-                "--   -- Miss:Zxx --- "
-                ;mode-line-directory
-                mode-line-buffer-identification
-                " "
-                mode-line-position
-                "   "
-                ;;mode-line-modes
-                ;;;mode-line-misc-info
-                "Path: "
-                buffer-file-name
-                "    "
-                (flycheck-mode flycheck-mode-line)
-                lsp--before-change-vals
-                "    "
-                " Author :rzry    "
-                ))
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode 1)
+            (setq tab-width 4)))
+;;;
+(add-hook 'org-mode-hook #'valign-mode)
+
+;;;行高
+(setq line-spacing 0.1)
+(setq-default cursor-type 'bar)
+
+
+;;;theme
+(load-theme 'spacemacs-dark t)
+
+;;;power-line 
 
 
 ;;; init.el ends here
-(put 'dired-find-alternate-file 'disabled nil)
+;;;(put 'dired-find-alternate-file 'disabled nil)

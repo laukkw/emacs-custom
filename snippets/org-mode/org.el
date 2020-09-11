@@ -1,3 +1,7 @@
+# -*- mode: snippet -*-
+# name: org
+# key: org
+# --
 #+OPTIONS: reveal_title_slide:"<h2>%t</h2><h3>%a</h3>"
 #+OPTIONS: toc:nil num:nil todo:nil pri:nil tags:nil ^:nil
 #+CATEGORY: $1

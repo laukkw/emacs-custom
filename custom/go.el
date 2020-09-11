@@ -33,6 +33,21 @@
 ;;    (add-hook 'go-mode-hook (lambda()
 ;;                              (add-to-list (make-local-variable 'company-backends)
 ;;                                           '(company-lsp company-files company-yasnippet company-capf company-dabbrev))))))
+
+;;;tabline
+
+
+(use-package lsp-mode
+  :ensure t
+  :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred))
+
+;;(use-package company-tabnine
+;;  :ensure t
+  
+;;  )
+
+
 ;;  (use-package go-errcheck
 ;;    :ensure t
 ;;    :hook (go-mode . go-errcheck-ignore)
@@ -45,9 +60,9 @@
 ;;      :defer t
 ;;      :init (setq company-lsp-cache-candidates 'auto))
 
-  (use-package lsp-ui
-      :defer t
-      :commands lsp-ui-mode)
+;;;  (use-package lsp-ui
+;;      :defer t
+;;      :commands lsp-ui-mode)
 
 ;;;(add-hook 'go-mode-hook #'company-mode-on)
 ;;; go.el ends here

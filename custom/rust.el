@@ -1,7 +1,9 @@
-;;; org.el --- org mode related                      -*- lexical-binding: t; -*-
-;; Copyright (C) 2018  Jerry Hsieh
-;; Author: Jerry Hsieh <jerryhsieh@Jerryde-MacBook-Pro.local>
-;; Keywords: calendar, processes
+;rust.el              -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2018  vagrant
+
+;; Author: vagrant <vagrant@node1.onionstudio.com.tw>
+;; Keywords: languages
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,14 +19,17 @@
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-
-;; 
-
 ;;; Code:
+;;;  lose  zxxx;rust.el
 
-(org-babel-load-file "~/.emacs.d/custom/org-setup.org")
+(use-package rust-mode
+  :ensure t
+  :mode ("\\.rs\\'" . rust-mode)
+  :config
+  (add-hook 'rust-mode-hook
+            (lambda () (setq indent-tabs-mode nil)))
+  (setq rust-format-on-save t)
+  (define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
+  )
+;;; rust.el ends here
 
-
-
-(provide 'org)
-;;; org.el ends here
