@@ -8,9 +8,9 @@
         '(
 
          ("blog-notes"
-   :base-directory "/home/rzry/rzry.github.io/blog/notes/"
+   :base-directory "/home/rzry/blog/notes/"
    :base-extension "org"
-   :publishing-directory "/home/rzry/rzry.github.io/blog/"
+   :publishing-directory "/home/rzry/blog/"
    :recursive t
    :publishing-function org-html-publish-to-html
    :headline-levels 4             ; Just the default for this project.
@@ -26,9 +26,9 @@
    :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"./style.css\"/>"
    )
            ("blog-static"
-   :base-directory "/home/rzry/rzry.github.io/blog/notes/"
+   :base-directory "/home/rzry/blog/notes/"
    :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-   :publishing-directory "/home/rzry/rzry.github.io/blog/"
+   :publishing-directory "/home/rzry/blog/"
    :recursive t
    :publishing-function org-publish-attachment
    )

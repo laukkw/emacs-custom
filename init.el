@@ -210,12 +210,12 @@
                'c-mode-hook
                'c++-mode-hook
                'haskell-mode-hook
+               'go-mode-hook
                ))
   (add-hook hook '(lambda () (nox-ensure))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;switch-windows
 (load-file "~/.emacs.d/custom/switch-windows.el")
-
 
 (provide 'init)
 ;;;;;;;;;
@@ -240,9 +240,6 @@
           (lambda ()
             (setq indent-tabs-mode 1)
             (setq tab-width 4)))
-;;;
-(add-hook 'org-mode-hook #'valign-mode)
-
 ;;;行高
 (setq line-spacing 0.1)
 (setq-default cursor-type 'bar)
@@ -251,8 +248,11 @@
 ;;;theme
 (load-theme 'spacemacs-dark t)
 
-;;;power-line 
+;;;power-line
 
+
+;;;设置 cl
+(setq byte-compile-warnings '(cl-functions))
 
 ;;; init.el ends here
 ;;;(put 'dired-find-alternate-file 'disabled nil)

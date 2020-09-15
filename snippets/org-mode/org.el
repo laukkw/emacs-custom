@@ -1,19 +1,13 @@
-# -*- mode: snippet -*-
-# name: org
-# key: org
-# --
-#+OPTIONS: reveal_title_slide:"<h2>%t</h2><h3>%a</h3>"
-#+OPTIONS: toc:nil num:nil todo:nil pri:nil tags:nil ^:nil
-#+CATEGORY: $1
-#+TAGS: $2
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/
-#+REVEAL_THEME: moon
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./style.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/rzry/rzry.github.io/blog/css/style.css"/>
-#+HTML_HEAD:<audio autoplay="autoplay" controls="controls"loop="loop" preload="auto" src="http://m10.music.126.net/20190829155334/b23c7c64098ba21508f0da1244872412/ymusic/270c/ee02/cd79/25ef23f2b5f9f60d5f8da59cbbf099a9.mp3">你的浏览器不支持audio标签</audio>
-#+TITLE: $3
-#+AUTHOR: `user-full-name`
-#+DATE: `(format-time-string "%Y-%m-%d")`
-#+LATEX_COMPILER: xelatex
-$0
+#+TITLE:     $0
+#+AUTHOR:    rzry
+#+EMAIL:     rzry36008@ccie.lol
+#+DATE:      `(format-time-string "%Y-%m-%d")`
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:2
+#+SETUPFILE: ~/WorkBench/org/roam/org-html-themes/setup/theme-readtheorg.setup
+#+begin_export html
+<div class="right">
+  <a href="https://github.com/rzry" class="fa fa-github"> Edit on GitHub</a>
+</div>
+#+end_export
+$1
