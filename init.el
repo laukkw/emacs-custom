@@ -64,8 +64,8 @@
 (use-package multiple-cursors
   :ensure t
   :bind (
-         ("M-c" . mc/mark-next-like-this)
-         ("M-m" . mc/mark-previous-like-this)
+         ("M-d" . mc/mark-next-like-this)
+         ("M-u" . mc/mark-previous-like-this)
          :map ctl-x-map
          ("\C-m" . mc/mark-all-dwim)
          ("<return>" . mule-keymap)
@@ -132,7 +132,6 @@
   (define-key company-active-map (kbd "M-p") nil))
 ;;;如果打了三个字没有跳出 就使用 company diag 来检查
 ;;;major mode 是 主模式 used backend 是使用的 补全模式
-
 ;;; yasnippet 会和 company 的  tab 冲突 所以
 ;;;
 (advice-add 'company-complete-common :before (lambda () (setq my-company-point (point))))
@@ -192,6 +191,23 @@
 ;;;暂时使用 lsp-mode company-lsp 来做代码提示
 (load "~/.emacs.d/custom/go.el")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                theme                ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/theme.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                powerline            ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/powerline.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                按键绑定              ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/key.el")
+
+
 ;;;                        nox
 (use-package posframe
   :ensure t
@@ -244,15 +260,23 @@
 (setq line-spacing 0.1)
 (setq-default cursor-type 'bar)
 
+;;; icon
+(use-package all-the-icons
+  :after memoize  
+  )
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
-;;;theme
-(load-theme 'spacemacs-dark t)
-
-;;;power-line
-
+;;;行号
+(use-package linum
+  :init
+  (progn
+    (global-linum-mode t)
+    (setq linum-format "%3d")
+    (set-face-background 'linum nil)
+    ))
 
 ;;;设置 cl
 (setq byte-compile-warnings '(cl-functions))
 
-;;; init.el ends here
+[[file:../../../WorkBench/org/roam/20200928-emacs_key.org][emacs Key]];;; init.el ends here
 ;;;(put 'dired-find-alternate-file 'disabled nil)
