@@ -26,6 +26,8 @@
 (setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
 (setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix emacs-tmp-dir)
+
+;;;(load "~/.emacs.d/custom/init-auto-save.el")
 ;;;                             自定义变量路径
 (setq custom-file "~/.emacs.d/custom-variables.el")
 (when (file-exists-p custom-file)
@@ -64,10 +66,10 @@
 (use-package multiple-cursors
   :ensure t
   :bind (
-         ("M-d" . mc/mark-next-like-this)
+         ("M-p" . mc/mark-next-like-this)
          ("M-u" . mc/mark-previous-like-this)
          :map ctl-x-map
-         ("\C-m" . mc/mark-all-dwim)
+         ("\c-m" . mc/mark-all-dwim)
          ("<return>" . mule-keymap)
          ))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -123,7 +125,9 @@
 ;;; 绑定到主模式
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (add-to-list  (make-local-variable 'company-backends)
-                                                '(company-elisp))))
+                                                '(company-elisp)
+                                                '(company-go))))
+
 ;;; 更改选项 选择  本来是 M n   改成 C n
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "\C-n") #'company-select-next)
@@ -137,6 +141,12 @@
 (advice-add 'company-complete-common :before (lambda () (setq my-company-point (point))))
 (advice-add 'company-complete-common :after (lambda () (when (equal my-company-point (point))
                                                          (yas-expand))))
+;;;
+;;; company-tabnine
+;;;
+(use-package company-tabnine :ensure t)
+(setq company-idle-delay 0)
+(setq company-show-numbers t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;语法检查 flycheck   查看错误检查  C c ! v的依赖;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;查看错误 C c ! l
 (use-package flycheck
@@ -207,6 +217,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "~/.emacs.d/custom/key.el")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                模糊搜索/              ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/snails.el")
+
 
 ;;;                        nox
 (use-package posframe
@@ -249,6 +264,10 @@
   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+  (setq eaf-proxy-type "http")
+  (setq eaf-proxy-host "127.0.0.1")
+  (setq eaf-proxy-port "10080")
+
 ;;;;
 ;;; 设置tab
 
@@ -278,5 +297,18 @@
 ;;;设置 cl
 (setq byte-compile-warnings '(cl-functions))
 
-[[file:../../../WorkBench/org/roam/20200928-emacs_key.org][emacs Key]];;; init.el ends here
+;;;设置yes 输入y
+(fset 'yes-or-no-p'y-or-n-p)
+
+;;;tab
+
+(use-package awesome-tab
+  :load-path "~/.emacs.d/custom/awesome-tab"
+  :config
+  (awesome-tab-mode t)
+  (setq awesome-tab-height 100)
+  (setq awesome-tab-label-fixed-length 8)
+  (setq awesome-tab-dark-unselected-blend 18)
+  )
+;;; init.el ends here
 ;;;(put 'dired-find-alternate-file 'disabled nil)

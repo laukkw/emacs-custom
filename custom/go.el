@@ -29,10 +29,10 @@
   (setq electric-pair-mode nil))
 ;;  (use-package company-go
 ;;    :ensure t
-;;    :config
+;;;    :config
 ;;    (add-hook 'go-mode-hook (lambda()
-;;                              (add-to-list (make-local-variable 'company-backends)
-;;                                           '(company-lsp company-files company-yasnippet company-capf company-dabbrev))))))
+;;;                              (add-to-list (make-local-variable 'company-backends)
+;;;                                           '(company-tabnine company-lsp company-files company-yasnippet)))))
 
 ;;;tabline
 
