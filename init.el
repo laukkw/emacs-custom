@@ -310,5 +310,18 @@
   (setq awesome-tab-label-fixed-length 8)
   (setq awesome-tab-dark-unselected-blend 18)
   )
+;;;;自动翻译
+
+;;(use-package english-teacher
+;;  :load-path "~/.emacs.d/custom/english-teacher" ;; NOTE: here type english teacher directory
+;;  :hook ((Info-mode
+;;          elfeed-show-mode
+;;          eww-mode
+;;          Man-mode
+;;          Woman-Mode) . english-teacher-follow-mode)
+;;  :bind (("C-S-w" . english-teacher-follow-mode))
+;;  :bind (("C-S-q" . english-teacher-disabled)))
+;;(setq english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
+;;
 ;;; init.el ends here
 ;;;(put 'dired-find-alternate-file 'disabled nil)
