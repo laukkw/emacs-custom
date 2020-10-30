@@ -37,7 +37,7 @@
 (package-install 'org-roam)
 (package-install 'org-roam-server)
 
-(require 'org-roam-protocol)                                        ;设定工作目录
+(require 'org-roam-protocol)                                  ;设定工作目录
 (setq org-roam-directory "~/WorkBench/org/roam")
 
                                         ;设置自启动
@@ -45,7 +45,7 @@
                                         ;设置可视化
 
 (setq org-roam-server-host "127.0.0.1"
-      org-roam-server-port 9999
+      org-roam-server-port 9996
       org-roam-server-export-inline-images t
       org-roam-server-authenticate nil
       org-roam-server-network-label-truncate t

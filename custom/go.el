@@ -21,12 +21,12 @@
 ;;; Commentary:
 ;;; Code:
 ;;;  lose  zxxx
-(use-package go-mode
-  :ensure t
-  :mode (("\\.go\\'" . go-mode))
-  :config
-  (setq gofmt-command "goimports")
-  (setq electric-pair-mode nil))
+;;(use-package go-mode
+ ;; :ensure t
+ ;; :mode (("\\.go\\'" . go-mode))
+ ;; :config
+ ;; (setq gofmt-command "goimports")
+ ;; (setq electric-pair-mode nil))
 ;;  (use-package company-go
 ;;    :ensure t
 ;;;    :config
@@ -37,32 +37,37 @@
 ;;;tabline
 
 
+;;;(use-package lsp-mode
+;;  :ensure t
+;;  :commands (lsp lsp-deferred)        
+;;  :hook (go-mode . lsp-deferred))
+
+
+;; Golang
+(defun lsp-go-install-save-hooks()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+(use-package go-mode
+  :ensure t
+  :mode (("\\.go\\'" . go-mode))
+  :init
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks))
+
+;; Language Server
 (use-package lsp-mode
   :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred))
+  :hook
+  (go-mode . lsp-deferred)
+  :commands (lsp lsp-deferred))
 
-;;(use-package company-tabnine
-;;  :ensure t
-  
-;;  )
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
 
-
-;;  (use-package go-errcheck
-;;    :ensure t
-;;    :hook (go-mode . go-errcheck-ignore)
-;;  )
-;;  (use-package lsp-mode
-;;    :ensure t
-;;    :hook (go-mode . lsp-mode)
-;;    )
-;;  (use-package company-lsp
-;;      :defer t
-;;      :init (setq company-lsp-cache-candidates 'auto))
-
-;;;  (use-package lsp-ui
-;;      :defer t
-;;      :commands lsp-ui-mode)
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
 
 ;;;(add-hook 'go-mode-hook #'company-mode-on)
 ;;; go.el ends here

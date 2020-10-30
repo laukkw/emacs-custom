@@ -21,15 +21,8 @@
 ;;; Commentary:
 ;;; Code:
 ;;;  lose  zxxx;rust.el
-
-(use-package rust-mode
-  :ensure t
-  :mode ("\\.rs\\'" . rust-mode)
-  :config
-  (add-hook 'rust-mode-hook
-            (lambda () (setq indent-tabs-mode nil)))
-  (setq rust-format-on-save t)
-  (define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
-  )
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
+(setq-default rustic-format-trigger 'on-save)
+(setq rustic-lsp-server 'rust-analyzer)
 ;;; rust.el ends here
 

@@ -8,3 +8,9 @@
 #+begin_export html
 #+end_export
 $1
+
+
+
+#+begin_center
+[[https://beian.miit.gov.cn][陕ICP备20008276号-1]]
+#+end_center

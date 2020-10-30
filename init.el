@@ -221,29 +221,33 @@
                                         ;                模糊搜索/              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load "~/.emacs.d/custom/snails.el")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ;                rust mode            ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "~/.emacs.d/custom/rust.el")
 
 
 ;;;                        nox
-(use-package posframe
-  :ensure t
-  )
-(require 'posframe)
-(load-file "~/.emacs.d/nox/nox.el")
-(dolist (hook (list
-               'js-mode-hook
-               'rust-mode-hook
-               'python-mode-hook
-               'ruby-mode-hook
-               'java-mode-hook
-               'sh-mode-hook
-               'php-mode-hook
-               'c-mode-common-hook
-               'c-mode-hook
-               'c++-mode-hook
-               'haskell-mode-hook
-               'go-mode-hook
-               ))
-  (add-hook hook '(lambda () (nox-ensure))))
+;;;(use-package posframe
+;;;  :ensure t
+;;;  )
+;;;(require 'posframe)
+;;;(load-file "~/.emacs.d/nox/nox.el")
+;;;(dolist (hook (list
+;;;               'js-mode-hook
+;;;               'rust-mode-hook
+;;;               'python-mode-hook
+;;;               'ruby-mode-hook
+;;;               'java-mode-hook
+;;;               'sh-mode-hook
+;;;               'php-mode-hook
+;;;               'c-mode-common-hook
+;;;               'c-mode-hook
+;;;               'c++-mode-hook
+;;;               'haskell-mode-hook
+;;;               'go-mode-hook
+;;;               ))
+;;;  (add-hook hook '(lambda () (nox-ensure))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;switch-windows
 (load-file "~/.emacs.d/custom/switch-windows.el")
@@ -302,14 +306,15 @@
 
 ;;;tab
 
-(use-package awesome-tab
-  :load-path "~/.emacs.d/custom/awesome-tab"
-  :config
-  (awesome-tab-mode t)
-  (setq awesome-tab-height 100)
-  (setq awesome-tab-label-fixed-length 8)
-  (setq awesome-tab-dark-unselected-blend 18)
-  )
+
+;(use-package awesome-tab
+;  :load-path "~/.emacs.d/custom/awesome-tab"
+;  :config
+;  (awesome-tab-mode t)
+;  (setq awesome-tab-height 100)
+;  (setq awesome-tab-label-fixed-length 8)
+;  (setq awesome-tab-dark-unselected-blend 18)
+;  )
 ;;;;自动翻译
 
 ;;(use-package english-teacher
