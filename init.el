@@ -9,7 +9,7 @@
 ;;;                              添加套件路径                                               ;;;;
 
 ;;; Commentary:
-;; 
+;;
 
 (require 'package)
 ;;; Code:
@@ -22,10 +22,20 @@
 (package-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;                             设置自动保存备份                                            ;;;;
-(defconst emacs-tmp-dir (format "%s%s/" temporary-file-directory "emacs-backup"))
-(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix emacs-tmp-dir)
+(use-package auto-save
+  :load-path "~/.emacs.d/custom/auto-save/"
+  :config
+  (auto-save-enable)
+  (setq auto-save-silent t)   ; quietly save
+  (setq auto-save-delete-trailing-whitespace t)  ; automatically delete spaces at the end of the line when saving
+  (setq auto-save-disable-predicates
+      '((lambda ()
+      (string-suffix-p
+      "gpg"
+      (file-name-extension (buffer-name)) t))))
+)
+
+
 
 ;;;(load "~/.emacs.d/custom/init-auto-save.el")
 ;;;                             自定义变量路径
@@ -287,7 +297,7 @@
 
 ;;; icon
 (use-package all-the-icons
-  :after memoize  
+  :after memoize
   )
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
