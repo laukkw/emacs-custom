@@ -14,4 +14,12 @@
 ;;;switch buffer
 (global-set-key (kbd "ESC s") 'ivy-switch-buffer)
 
+
+;;;翻译
+(global-set-key (kbd "C-r") 'sdcv-search-pointer+)
+;;; 补全
+(global-set-key (kbd "M->") 'toggle-company-english-helper)
+;;;汉译英
+(global-set-key (kbd "M-<") 'insert-translated-name-insert)
+;;;Sky blue waiting for rain And I'm waiting for you
 ;;;end'

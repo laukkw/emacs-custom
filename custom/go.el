@@ -69,5 +69,6 @@
   :ensure t
   :commands company-lsp)
 
+
 ;;;(add-hook 'go-mode-hook #'company-mode-on)
 ;;; go.el ends here

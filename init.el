@@ -32,6 +32,8 @@
 (setq custom-file "~/.emacs.d/custom-variables.el")
 (when (file-exists-p custom-file)
   (load custom-file))
+;;;自动加载
+ (global-auto-revert-mode 1)
 ;;;                             use package 插件管理                                        ;;;;
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -304,8 +306,34 @@
 ;;;设置yes 输入y
 (fset 'yes-or-no-p'y-or-n-p)
 
-;;;tab
+;;; 翻译
+(use-package sdcv
+  :load-path "~/.emacs.d/custom/sdcv"
+  :config
+  (setq sdcv-say-word-p t)               ;say word after translation
 
+  (setq sdcv-dictionary-data-dir "/usr/share/stardict/dic") ;setup directory of stardict dictionary
+
+  (setq sdcv-dictionary-simple-list    ;setup dictionary list for simple search
+        '(
+          "懒虫简明英汉词典"
+          "懒虫简明汉英词典"
+          ))
+
+  (setq sdcv-dictionary-complete-list     ;setup dictionary list for complete search
+        '(
+          "懒虫简明英汉词典"
+          "懒虫简明汉英词典"
+          ))
+  )
+;;; 补全
+(use-package company-english-helper
+  :load-path "~/.emacs.d/custom/company-english-helper"
+  )
+;;; 汉译英
+(use-package  insert-translated-name
+  :load-path "~/.emacs.d/custom/insert-translated-name"
+  )
 
 ;(use-package awesome-tab
 ;  :load-path "~/.emacs.d/custom/awesome-tab"
