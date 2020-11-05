@@ -4,3 +4,6 @@
 [submodule "custom/nox"]
 	path = custom/nox
 	url = https://github.com/manateelazycat/nox.git
+[submodule "custom/snails"]
+        path = custom/snails
+        usl = https://github.com/manateelazycat/snails.git

@@ -262,9 +262,11 @@
 ;;;  (add-hook hook '(lambda () (nox-ensure))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;switch-windows
+(use-package switch-window
+  :ensure t
+  )
 (load-file "~/.emacs.d/custom/switch-windows.el")
 
-(provide 'init)
 ;;;;;;;;;
 ;;;(lab-themes-load-style 'dark)
 ;;;(flucui-themes-load-style 'dark)
@@ -345,6 +347,10 @@
   :load-path "~/.emacs.d/custom/insert-translated-name"
   )
 
+
+
+
+(provide 'init)
 ;(use-package awesome-tab
 ;  :load-path "~/.emacs.d/custom/awesome-tab"
 ;  :config
