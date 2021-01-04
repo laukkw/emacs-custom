@@ -1,0 +1,21 @@
+#+TITLE:     emacs-config
+#+AUTHOR:    rzry https://github.com/rzry
+#+EMAIL:     rzry36008@ccie.lol
+#+DATE:      2020-09-30
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:2
+#+SETUPFILE: ./org-html-themes/setup/theme-readtheorg.setup
+#+begin_export html
+#+end_export
+
+* 安装
+  - 1 . clone 本仓库 到 ~ 
+  - 2 . rename 为 .emacs.d 
+  - 3 . 启动emacs 
+
+* 介绍 
+  - 1 . 需要开启代理 引入的elpa源 并未使用镜像源
+  - 2 . 使用use-package 会自动更新
+  - 3 . init.el 有详细的注释 
+  - 4 . 如果插件无法运行 请自行debug .
+  - 5 . 查看外部依赖是否安装完毕. init.el中会提到
